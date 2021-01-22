@@ -17,9 +17,11 @@ pascal_triangle i = pascal_triangle' (i-1) [] [[1]]
 
 main = do
   input <- getLine
-  print $ map joinWithSpace $ pascal_triangle . listToSingle. convertToInt . words $ input
+  mapM_ putStrLn $ map joinWithSpace $map convertToString $ pascal_triangle . listToSingle. convertToInt . words $ input
  where
   listToSingle(x:_) = x
   convertToInt = map (read :: String -> Int)
-  joinWithSpace = map show
+  convertToString = map show
+  joinWithSpace=intercalate " "
+  
 
